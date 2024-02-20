@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap");
+@layer components {
+  .flxrow {
+    @apply flex flex-row;
+  }
+  .flxcol {
+    @apply flex flex-col;
+  }
+  .ft_text-sm {
+    @apply text-[12px] font-[500] text-secondary;
+  }
+
+  .ft_text-basic {
+    @apply text-[1rem] font-[500] text-basic;
+  }
+
+  .ft_text-md_accent {
+    @apply text-[1.125rem] font-[600] text-[#ffffff];
+  }
+
+  .ft_white-text {
+    @apply text-[#ffffff];
+  }
+  .ft_hover-nav {
+    @apply hover:text-secondary transition-colors duration-150;
+  }
+  .ft_nav-item {
+    @apply h-[56px] items-center justify-start w-full flxrow;
+  }
+}
+
+body {
+  font-family: "Source Sans 3", sans-serif;
+}
+
+.myShadow {
+  -webkit-box-shadow: 0px 9px 5px -3px rgba(34, 60, 80, 0.25);
+  -moz-box-shadow: 0px 9px 5px -3px rgba(34, 60, 80, 0.25);
+  box-shadow: 0px 9px 5px -3px rgba(34, 60, 80, 0.25);
+}
