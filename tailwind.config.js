@@ -6,7 +6,7 @@ module.exports = {
     colors: {
       secondary: "#646464",
       basic: "#222222",
-      accent: "#b80000",
+      accent: "#FF7F00",
     },
   },
   plugins: [],
