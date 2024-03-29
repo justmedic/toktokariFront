@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
 import { useG } from "../context/GlobalContext";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { FaGripLines } from "react-icons/fa6";
 import convertToNestedObject from "../utils/convertToNested";
+import { Link } from "react-router-dom";
 
 const NavCat = () => {
   const [menuVisible, setMenuVisible] = useState(false);
@@ -14,7 +14,7 @@ const NavCat = () => {
 
   const renderCategory = (category, iter) => {
     return (
-      <Link
+      <div
         to={`/categories/${category.id}`}
         key={category.id}
         onMouseEnter={() => {
@@ -33,23 +33,13 @@ const NavCat = () => {
             {category.children.map((cat) => renderCategory(cat, iter + 1))}
           </div>
         )}
-      </Link>
+      </div>
     );
   };
 
-  useEffect(() => {
-    console.log(menuRef.current);
-    if (menuRef.current) {
-      menuRef.current.style.transform = "-100px";
-      setTimeout(() => {
-        menuRef.current.style.top = "56px";
-      }, 300);
-    }
-  }, [menuVisible]);
-
   return (
     <Link
-      to={"/categories"}
+      to={"/shop"}
       className="flex items-center bg-accent h-full px-4 hover:bg-[hsla(0,50%,50%,1)] transition-color duration-150 relative"
       onMouseEnter={() => {
         setMenuVisible(true);
@@ -64,7 +54,9 @@ const NavCat = () => {
       {menuVisible && (
         <div
           ref={menuRef}
-          className="absolute flxcol text-secondary left-0 top-[56px] w-full bg-[#ffffff] shadow-2xl z-30 transition-all duration-200"
+          className={`absolute flxcol text-secondary left-0 top-[56px] w-full bg-[#ffffff] shadow-2xl z-30 transition-all duration-200 ${
+            menuVisible && " top-[56px]"
+          }`}
         >
           {nestedCats.map((cat) => renderCategory(cat, 0))}
         </div>

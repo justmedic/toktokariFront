@@ -12,7 +12,7 @@ function App() {
   const { setCats } = useG();
 
   useEffect(() => {
-    const homeUrl = "http://localhost:8001/";
+    const homeUrl = "http://127.0.0.1:8000/";
     const fetchHome = async () => {
       await axios
         .get(homeUrl)
@@ -29,10 +29,9 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
-        <Route path="/categories" element={<Categories />} />
-        <Route path="/category/:catId" element={<Category />} />
+        <Route path="/shop/:catSlug" element={<Category />} />
       </Routes>
     </div>
   );

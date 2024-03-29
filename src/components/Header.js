@@ -7,10 +7,12 @@ import {
 import logo from "../static/logo2.jpg";
 import Subheader from "./Subheader";
 import { useEffect, useRef, useState } from "react";
+import { redirect, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [inputShown, setInputShow] = useState(false);
   const inputRef = useRef(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let toBuf;
@@ -29,7 +31,14 @@ const Header = () => {
       <div className="w-full flex justify-center">
         <div className="w-[1280px] h-[80px] flxrow items-center justify-evenly px-[32px]">
           <div className="h-full p-2">
-            <img src={logo} alt="logo" className="h-full" />
+            <img
+              src={logo}
+              alt="logo"
+              className="h-full cursor-pointer"
+              onClick={() => {
+                navigate("/");
+              }}
+            />
           </div>
           <div
             className={`flxrow transition-all duration-200 ${

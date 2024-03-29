@@ -1,21 +1,34 @@
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Breadcrumbs from "./Breadcrumbs";
+import Categories from "./Categories";
+import BasicWrapper from "./BasicWrapper";
 
 const Category = () => {
-  const { catId } = useParams();
+  const { catSlug } = useParams();
+  const [currentCat, setCurrentCat] = useState(null);
 
   useEffect(() => {
     const fetchProds = async () => {
-      await axios(`http://localhost:8001/shop/categories/${catId}/`).then(
-        (res) => console.log(res.data)
+      await axios(`http://localhost:8000/shop/categories/${catSlug}/`).then(
+        (res) => {
+          setCurrentCat(res.data);
+        }
       );
     };
 
     fetchProds();
-  }, [catId]);
+  }, [catSlug]);
 
-  return <div>{catId}</div>;
+  return (
+    <BasicWrapper>
+      <Breadcrumbs />
+      {currentCat?.children && (
+        <Categories subcats={currentCat.children} currCatId={currentCat.id} />
+      )}
+    </BasicWrapper>
+  );
 };
 
 export default Category;
