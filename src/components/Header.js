@@ -36,7 +36,7 @@ const Header = () => {
               alt="logo"
               className="h-full cursor-pointer"
               onClick={() => {
-                navigate("/");
+                navigate("/home");
               }}
             />
           </div>

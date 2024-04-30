@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 const russianNames = {
   shop: "Каталог товаров",
   home: "Главная",
+  cart: "Корзина",
 };
 
 const Breadcrumbs = () => {

@@ -8,7 +8,7 @@ import GlobalContext from "./context/GlobalContext";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <GlobalContext>
+    <GlobalContext basename="/calendar">
       <App />
     </GlobalContext>
   </BrowserRouter>

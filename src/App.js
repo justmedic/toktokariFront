@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import Header from "./components/Header";
 import Home from "./components/Home";
 import Shop from "./components/Shop";
@@ -7,6 +7,7 @@ import Category from "./components/Category";
 import { useEffect } from "react";
 import { useG } from "./context/GlobalContext";
 import axios from "axios";
+import Cart from "./components/Cart";
 
 function App() {
   const { setCats } = useG();
@@ -32,6 +33,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/shop/:catSlug" element={<Category />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </div>
   );
