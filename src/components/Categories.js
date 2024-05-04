@@ -1,16 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useG } from "../context/GlobalContext";
 
 const Categories = ({ subcats, currCatId }) => {
-  console.log(subcats, currCatId);
   const { cats } = useG();
-
+  const location = useLocation();
   const renderCats = (arr) => {
     return arr
       .filter((cat) => !cat.parent || currCatId === cat.parent)
       .map((category) => (
         <div key={category.id} className="bg-gray-100 rounded-lg">
-          <Link to={`/shop/${category.id}`}>
+          <Link to={`${location.pathname}/${category.id}`}>
             <img
               src="https://via.placeholder.com/176x256"
               alt="Placeholder"

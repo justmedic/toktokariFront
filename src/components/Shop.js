@@ -5,7 +5,7 @@ import Breadcrumbs from "./Breadcrumbs";
 import BasicWrapper from "./BasicWrapper";
 import Categories from "./Categories";
 
-const Catalog = () => {
+const Catalog = ({ slug }) => {
   return (
     <BasicWrapper>
       <Breadcrumbs />

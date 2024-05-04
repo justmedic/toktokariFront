@@ -1,25 +1,30 @@
 import { FaAngleRight } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
+import { useG } from "../context/GlobalContext";
 
-const russianNames = {
+let russianNames = {
   shop: "Каталог товаров",
   home: "Главная",
   cart: "Корзина",
 };
 
 const Breadcrumbs = () => {
+  const { catNames } = useG();
+
   const location = useLocation();
   const pathnames = location.pathname.split("/").filter((x) => x);
-  const breadcrumbs = ["home", ...pathnames];
+  const breadcrumbs = pathnames;
+
+  russianNames = { ...russianNames, ...catNames };
 
   return (
-    <nav className=" text-secondary flxrow mt-4 w-full">
+    <nav className="text-secondary flxrow mt-4 w-full">
       {breadcrumbs.map((name, index) => {
         const routeTo = `/${breadcrumbs.slice(0, index + 1).join("/")}`;
         const isLast = index === breadcrumbs.length - 1;
         return (
-          <div key={name} className="flxrow text-center items-center ">
-            <span className={isLast ? " text-secondary" : ""}>
+          <div key={name} className="flxrow text-center items-center">
+            <span className={isLast ? "text-secondary" : ""}>
               {isLast ? (
                 russianNames[name]
               ) : (

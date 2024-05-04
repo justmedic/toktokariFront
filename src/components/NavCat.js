@@ -14,8 +14,8 @@ const NavCat = () => {
 
   const renderCategory = (category, iter) => {
     return (
-      <div
-        to={`/categories/${category.id}`}
+      <Link
+        to={`/shop/${category.id}`}
         key={category.id}
         onMouseEnter={() => {
           setCatPath((prev) => {
@@ -33,7 +33,7 @@ const NavCat = () => {
             {category.children.map((cat) => renderCategory(cat, iter + 1))}
           </div>
         )}
-      </div>
+      </Link>
     );
   };
 
